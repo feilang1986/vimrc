@@ -16,12 +16,16 @@ Bundle 'gmarik/vundle'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " original repos on GitHub
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" git wrapper for vim
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
+" a simple way to use motion in vim
+"Bundle 'Lokaltog/vim-easymotion'
+" create better statusline
 Bundle 'Lokaltog/vim-powerline'
+" for writing ruby on rails
+"Bundle 'tpope/vim-rails.git'
+" for writing html
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-scripts repos http://www.vim-scripts.org/vim/scripts.html
@@ -32,32 +36,40 @@ Bundle 'L9'
 Bundle 'genutils'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" finder
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" file/buffer fuzzy matching 
+Bundle 'Command-T'
+" Allows switching between companion source files (like a.vim)
+Bundle 'FSwitch'
+" Lookup files using Vim7 ins-completion
+"Bundle 'lookupfile'
+" buffer/file/command/tag/etc explorer with fuzzy matching
+"Bundle 'FuzzyFinder'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " browser
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Elegant buffer explorer - takes very little screen space
+Bundle 'minibufexpl.vim'
 " A tree explorer plugin for navigating the filesystem
 Bundle 'The-NERD-Tree'
 " Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc)
 Bundle 'taglist.vim'
-" Elegant buffer explorer - takes very little screen space
-Bundle 'minibufexpl.vim'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" finder
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lookup files using Vim7 ins-completion
-Bundle 'lookupfile'
-" buffer/file/command/tag/etc explorer with fuzzy matching
-Bundle 'FuzzyFinder'
-" Allows switching between companion source files (like a.vim)
-Bundle 'FSwitch'
+" Display tags of the current file ordered by scope
+Bundle 'Tagbar'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " completion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Do all your insert-mode completion with Tab!
-Bundle 'SuperTab'
+"Bundle 'SuperTab'
 " TextMate-style snippets for Vim
 Bundle 'snipMate'
+" Auto pairs
+Bundle 'Auto-Pairs'
+" Smart auto completion
+Bundle 'neocomplcache'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " comment
@@ -65,15 +77,38 @@ Bundle 'snipMate'
 " A plugin that allows for easy commenting of code for many filetypes.
 Bundle 'The-NERD-Commenter'
 " My fork of ToggleCommentify.vim; comment lines in a program
-Bundle 'FeralToggleCommentify.vim'
+"Bundle 'FeralToggleCommentify.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " marks
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visually shows the location of marks
-Bundle 'ShowMarks'
-" Display tags of the current file ordered by scope
-Bundle 'Tagbar'
+"Bundle 'ShowMarks'
+" Browser marks in the file
+Bundle 'Marks-Browser'
+" Show Tasklist 
+Bundle 'Tasklist.vim'
+" Modified history
+Bundle 'YankRing.vim'
+" Graphical undo
+Bundle 'Gundo'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" python
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enhanced version of the python syntax highlighting script
+"Bundle 'python.vim'
+"" Tab-complete your Python code
+""Bundle 'Pydiction'
+"" Python omni complete
+Bundle 'pythoncomplete'
+"" A Python filetype plugin to check pep8 convention.
+"Bundle 'pep8'
+"" Check python grammar errors
+"Bundle 'pyflakes'
+"" Python document
+"Bundle 'pydoc.vim'
+Bundle 'Python-mode-klen'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cpp
@@ -83,20 +118,11 @@ Bundle 'OmniCppComplete'
 " Emacs like gdb interface to cterm vim
 Bundle 'vimgdb'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" python
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enhanced version of the python syntax highlighting script
-Bundle 'python.vim'
-" Tab-complete your Python code
-Bundle 'Pydiction'
-" A Python filetype plugin to check pep8 convention.
-Bundle 'pep8'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " non-GitHub repos
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'git://git.wincent.com/command-t.git'
+"Bundle 'git://git.wincent.com/command-t.git'
 " Git repos on your local machine (i.e. when working on your own plugin)
 " Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...

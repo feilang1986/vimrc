@@ -31,7 +31,7 @@ set nu
 set lz
 
 "Change buffer - without saving
-"set hid
+set hidden
 
 "Set backspace
 set backspace=eol,start,indent
@@ -62,6 +62,10 @@ set showmatch
 "How many tenths of a second to blink
 "set mat=2
 
+"Fold setting
+set foldenable
+set foldmethod=indent
+set foldlevel=3
 """"""""""""""""""""""""""""""
 " Statusline
 """"""""""""""""""""""""""""""
@@ -85,9 +89,6 @@ set laststatus=2
 "Restore cursor to file position in previous editing session
 set viminfo='10,\"100,:20,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Session options

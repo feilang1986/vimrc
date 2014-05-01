@@ -4,28 +4,13 @@
 
 "set space before and after = + - *
 "set space after ,
-au FileType python,c,cpp inoremap <buffer>= <c-r>=EqualSign('=')<CR>
-au FileType python,c,cpp inoremap <buffer>+ <c-r>=EqualSign('+')<CR>
-au FileType python,c,cpp inoremap <buffer>- <c-r>=EqualSign('-')<CR>
-au FileType python,c,cpp inoremap <buffer>* <c-r>=EqualSign('*')<CR>
-au FileType python,c,cpp inoremap <buffer>/ <c-r>=EqualSign('/')<CR>
-au FileType python,c,cpp inoremap <buffer>> <c-r>=EqualSign('>')<CR>
-au FileType python,c,cpp inoremap <buffer>< <c-r>=EqualSign('<')<CR>
-au FileType python,c,cpp inoremap <buffer>: <c-r>=Swap()<CR>
-au FileType python,c,cpp inoremap <buffer>, ,<space>
-
-
-" auto pair
-imap "" ""<left>
-imap '' ''<left>
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {}<ESC>i
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap < <><ESC>i
-:inoremap > <c-r>=ClosePair('>')<CR>
+"au FileType python,c,cpp inoremap <buffer>= <c-r>=EqualSign('=')<CR>
+"au FileType python,c,cpp inoremap <buffer>+ <c-r>=EqualSign('+')<CR>
+"au FileType python inoremap <buffer>- <c-r>=EqualSign('-')<CR>
+"au FileType python inoremap <buffer>* <c-r>=EqualSign('*')<CR>
+"au FileType python inoremap <buffer>/ <c-r>=EqualSign('/')<CR>
+"au FileType python inoremap <buffer>> <c-r>=EqualSign('>')<CR>
+"au FileType python inoremap <buffer>< <c-r>=EqualSign('<')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Todo
@@ -59,13 +44,15 @@ au FileType html set syntax=html
 """"""""""""""""""""""""""""""
 " C/C++
 """""""""""""""""""""""""""""""
-autocmd FileType c,cpp,xml  map <buffer> <leader><space> :make<cr>
+au FileType c,cpp,xml  map <buffer> <leader><space> :make<cr>
 "autocmd FileType c,cpp  setl foldmethod=syntax | setl fen
 
 """"""""""""""""""""""""""""""
 " Python
 """""""""""""""""""""""""""""""
-autocmd FileType python setlocal expandtab | setlocal shiftwidth=4 |
- \setlocal softtabstop=4 | setlocal textwidth=76 |
- \setlocal tabstop=4 | setlocal foldmethod=indent
+au FileType python setlocal expandtab | setlocal shiftwidth=4 |
+ \setlocal softtabstop=4 | "setlocal textwidth=76 |
+ \setlocal tabstop=4 "| setlocal foldmethod=indent
+"au FileType python set omnifunc=pythoncomplete#Complete
+"au BufRead *.py map <buffer> <F5> :w<CR>:!/usr/bin/env python % <CR>
 

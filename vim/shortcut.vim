@@ -11,8 +11,8 @@ nmap <silent> <leader>wf :w!<cr>
 
 "Fast quiting
 nmap <silent> <leader>qw :wq<cr>
-nmap <silent> <leader>qf :q!<cr>
-nmap <silent> <leader>qq :q<cr>
+nmap <silent> <leader>qf :call BufCloseForce()<cr>
+nmap <silent> <leader>qq :call BufClose()<cr>
 nmap <silent> <leader>qa :qa<cr>
 
 "Fast remove highlight search
@@ -64,7 +64,9 @@ nmap <C-l> <C-W>l
 
 "Actually, the tab does not switch buffers, but my arrows
 "Bclose function can be found in "Buffer related" section
-map <leader>bd :Bclose<cr>
+" Don't close window, when deleting a buffer
+"command! Bclose call BufcloseCloseIt()
+"map <leader>bd :Bclose<cr>
 "map <down> <leader>bd
 
 "Use the arrows to something usefull
@@ -72,15 +74,28 @@ map <leader>bd :Bclose<cr>
 "map <left> :bp<cr>
 
 "Tab configuration
-map <leader>tn :tabnew
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-try
-  set switchbuf=useopen
-  set stal=1
-catch
-endtry
+"map <leader>tn :tabnew
+"map <leader>te :tabedit
+"map <leader>tc :tabclose<cr>
+"map <leader>tm :tabmove
+"try
+"  set switchbuf=useopen
+"  set stal=1
+"catch
+"endtry
+
+"Buffer related
+"go to buffer 1/2/3 etc
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
 
 "Moving fast to front, back and 2 sides ;)
 imap <m-$> <esc>$a
@@ -95,28 +110,28 @@ cnoremap <C-K>    <C-U>
 map <silent> <leader>cd :cd %:p:h<cr>
 
 " Parenthesis/bracket expanding
-vnoremap @1 <esc>`>a)<esc>`<i(<esc>
-vnoremap @2 <esc>`>a]<esc>`<i[<esc>
-vnoremap @3 <esc>`>a}<esc>`<i{<esc>
-vnoremap @$ <esc>`>a"<esc>`<i"<esc>
-vnoremap @q <esc>`>a'<esc>`<i'<esc>
-vnoremap @w <esc>`>a"<esc>`<i"<esc>
+"vnoremap @1 <esc>`>a)<esc>`<i(<esc>
+"vnoremap @2 <esc>`>a]<esc>`<i[<esc>
+"vnoremap @3 <esc>`>a}<esc>`<i{<esc>
+"vnoremap @$ <esc>`>a"<esc>`<i"<esc>
+"vnoremap @q <esc>`>a'<esc>`<i'<esc>
+"vnoremap @w <esc>`>a"<esc>`<i"<esc>
 
 "Map auto complete of (, ", ', [
-inoremap @1 ()<esc>:let leavechar=")"<cr>i
-inoremap @2 []<esc>:let leavechar="]"<cr>i
-inoremap @3 {}<esc>:let leavechar="}"<cr>i
-inoremap @4 {<esc>o}<esc>:let leavechar="}"<cr>O
-inoremap @q ''<esc>:let leavechar="'"<cr>i
-inoremap @w ""<esc>:let leavechar='"'<cr>i
-au BufNewFile,BufRead *.\(vim\)\@! inoremap " ""<esc>:let leavechar='"'<cr>i
-au BufNewFile,BufRead *.\(txt\)\@! inoremap ' ''<esc>:let leavechar="'"<cr>i
-
-imap <m-l> <esc>:exec "normal f" . leavechar<cr>a
-imap <d-l> <esc>:exec "normal f" . leavechar<cr>a
+"inoremap @1 ()<esc>:let leavechar=")"<cr>i
+"inoremap @2 []<esc>:let leavechar="]"<cr>i
+"inoremap @3 {}<esc>:let leavechar="}"<cr>i
+"inoremap @4 {<esc>o}<esc>:let leavechar="}"<cr>O
+"inoremap @q ''<esc>:let leavechar="'"<cr>i
+"inoremap @w ""<esc>:let leavechar='"'<cr>i
+"au BufNewFile,BufRead *.\(vim\)\@! inoremap " ""<esc>:let leavechar='"'<cr>i
+"au BufNewFile,BufRead *.\(txt\)\@! inoremap ' ''<esc>:let leavechar="'"<cr>i
+"
+"imap <m-l> <esc>:exec "normal f" . leavechar<cr>a
+"imap <d-l> <esc>:exec "normal f" . leavechar<cr>a
 
 "Open a dummy buffer for paste
-map <leader>es :tabnew<cr>:setl buftype=nofile<cr>
+"map <leader>es :tabnew<cr>:setl buftype=nofile<cr>
 map <leader>ec :e ~/tmp/scratch.txt<cr>
 
 " do not automaticlly remove trailing whitespace
@@ -150,40 +165,41 @@ inoremap <C-]>             <C-X><C-]>
 inoremap <C-F>             <C-X><C-F>
 inoremap <C-D>             <C-X><C-D>
 inoremap <C-L>             <C-X><C-L>
+inoremap <C-O>             <C-X><C-O>
 
 " Spell checking
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+"map <leader>sn ]s
+"map <leader>sp [s
+"map <leader>sa zg
+"map <leader>s? z=
 
 " folding
 nmap <silent> <leader>zo zO
 vmap <silent> <leader>zo zO
 
 " shift
-map <leader>t2 :set shiftwidth=2<cr>
-map <leader>t4 :set shiftwidth=4<cr>
+"map <leader>t2 :set shiftwidth=2<cr>
+"map <leader>t4 :set shiftwidth=4<cr>
 
 "Quickfix
-nmap <leader>cn :cn<cr>
-nmap <leader>cp :cp<cr>
-nmap <leader>cw :cw 10<cr>
-"nmap <leader>cc :botright lw 10<cr>
-"map <c-u> <c-l><c-j>:q<cr>:botright cw 10<cr>
+nmap <leader>qn :cn<cr>
+nmap <leader>qp :cp<cr>
+"nmap <leader>qw :cw 10<cr>
+nmap <leader>qc :botright lw 10<cr>
+map <c-u> <c-l><c-j>:q<cr>:botright cw 10<cr>
 
 " Fast grep
 nmap <silent> <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
-vmap <silent> <leader>lv :lv /<c-r>=<sid>GetVisualSelection()<cr>/ %<cr>:lw<cr>
+vmap <silent> <leader>lv :lv /<c-r>=GetVisualSelection()<cr>/ %<cr>:lw<cr>
 
 " Fast diff
 "cmap @vd vertical diffsplit
 
 "Remove the Windows ^M
-noremap <Leader>dm mzHmx:%s/<C-V><cr>//ge<cr>'xzt'z:delm x z<cr>
+"noremap <Leader>dm mzHmx:%s/<C-V><cr>//ge<cr>'xzt'z:delm x z<cr>
 
 "Paste toggle - when pasting something in, don't indent.
-set pastetoggle=<F3>
+"set pastetoggle=<F3>
 
 "Remove indenting on empty lines
 "map <F2> :%s/\s*$//g<cr>:noh<cr>''
@@ -199,4 +215,9 @@ set pastetoggle=<F3>
 
 "Fast copy
 "nnoremap ' "
+
+"Compile and run
+map <F5> :call CompileRun()<CR>
+"Debug
+map <F6> :call RunDebug()<CR>
 
